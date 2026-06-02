@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import sailajaLogo from "@/assets/sailajaLogo.webp";
 
 const links = [
   { to: "/", label: "Home" },
@@ -28,11 +29,8 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 text-white">
-          <div className="w-10 h-10 bg-[var(--primary)] flex items-center justify-center font-black text-[var(--charcoal)] text-lg">S</div>
-          <span className="font-extrabold text-lg tracking-wide" style={{ fontFamily: "Montserrat" }}>
-            SAILAJA<span className="text-[var(--primary)]">.</span>
-          </span>
+        <Link to="/" className="flex items-center gap-2">
+          <img src={sailajaLogo} alt="Sailaja Constructions" className="h-16 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">

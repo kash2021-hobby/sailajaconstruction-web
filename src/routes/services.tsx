@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, ClipboardList, FileText, HardHat } from "lucide-react";
 import { PageHero, CtaBand } from "@/components/site/PageHero";
-import residentialImg from "@/assets/service-residential.jpg";
-import commercialImg from "@/assets/service-commercial.jpg";
+import residentialImg from "@/assets/bhaskarimg/sailajabhaskarresideny.webp";
+import commercialImg from "@/assets/fashioncityimg.webp";
 import interiorImg from "@/assets/service-interior.jpg";
 import landImg from "@/assets/service-land.jpg";
 

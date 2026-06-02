@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { scaleFade } from "@/lib/animations";
+import { HeroCurve } from "@/components/HeroCurve";
 
 export function PageHero({ eyebrow, title, subtitle }: { eyebrow: string; title: ReactNode; subtitle?: string }) {
+  const reduced = useReducedMotion();
   return (
     <section className="relative bg-[var(--charcoal)] text-white pt-36 pb-24 overflow-hidden">
       <div
@@ -17,15 +22,26 @@ export function PageHero({ eyebrow, title, subtitle }: { eyebrow: string; title:
         <h1 className="text-4xl md:text-6xl font-black leading-tight">{title}</h1>
         {subtitle && <p className="mt-6 text-white/75 text-lg max-w-2xl mx-auto">{subtitle}</p>}
       </div>
+      <HeroCurve />
     </section>
   );
 }
 
 export function CtaBand() {
+  const reduced = useReducedMotion();
+  const sectionViewport = { once: true, amount: 0.2 as const };
+
   return (
     <section className="bg-[var(--charcoal)] py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="bg-[var(--primary)] p-10 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <motion.div
+          className="bg-[var(--primary)] p-10 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          variants={reduced ? undefined : scaleFade}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionViewport}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div>
             <div className="text-xs font-bold tracking-[0.25em] uppercase text-[var(--charcoal)]/80 mb-2" style={{ fontFamily: "Montserrat" }}>
               Ready to Start Your Project?
@@ -34,10 +50,23 @@ export function CtaBand() {
               From Idea to Reality,<br />Let's Begin.
             </h3>
           </div>
-          <a href="/contact" className="inline-flex items-center justify-center bg-[var(--charcoal)] text-white px-8 py-4 font-bold uppercase tracking-wider text-sm border-2 border-[var(--charcoal)] hover:bg-transparent hover:text-[var(--charcoal)] transition" style={{ fontFamily: "Montserrat" }}>
-            Let's Talk
-          </a>
-        </div>
+          <motion.a
+            href="/contact"
+            className="inline-flex items-center justify-center bg-[var(--charcoal)] text-white px-8 py-4 font-bold uppercase tracking-wider text-sm border-2 border-[var(--charcoal)]"
+            style={{ fontFamily: "Montserrat" }}
+            whileHover={reduced ? undefined : { backgroundColor: "rgba(0,0,0,0.85)" }}
+            transition={{ duration: 0.3 }}
+          >
+            <span>Let's Talk</span>
+            <motion.span
+              className="ml-2 inline-flex"
+              whileHover={reduced ? undefined : { x: 4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ArrowRight size={16} />
+            </motion.span>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

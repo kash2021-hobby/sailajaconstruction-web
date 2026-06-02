@@ -15,6 +15,19 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsXopunAloyRouteImport } from './routes/projects.xopun-aloy'
+import { Route as ProjectsSunshineResidencyRouteImport } from './routes/projects.sunshine-residency'
+import { Route as ProjectsSailajaSapphireRouteImport } from './routes/projects.sailaja-sapphire'
+import { Route as ProjectsSailajaParadiseRouteImport } from './routes/projects.sailaja-paradise'
+import { Route as ProjectsMangalmurtiEnclaveRouteImport } from './routes/projects.mangalmurti-enclave'
+import { Route as ProjectsMadhabMansionRouteImport } from './routes/projects.madhab-mansion'
+import { Route as ProjectsMaanavAbodeRouteImport } from './routes/projects.maanav-abode'
+import { Route as ProjectsMaanaavAbodeRouteImport } from './routes/projects.maanaav-abode'
+import { Route as ProjectsDurgaResidencyRouteImport } from './routes/projects.durga-residency'
+import { Route as ProjectsBimaanArcadeRouteImport } from './routes/projects.bimaan-arcade'
+import { Route as ProjectsBhaskarRouteImport } from './routes/projects.bhaskar'
+import { Route as ProjectsBaneswarRouteImport } from './routes/projects.baneswar'
+import { Route as ProjectsArupArcadiaRouteImport } from './routes/projects.arup-arcadia'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -46,31 +59,137 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsXopunAloyRoute = ProjectsXopunAloyRouteImport.update({
+  id: '/xopun-aloy',
+  path: '/xopun-aloy',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsSunshineResidencyRoute =
+  ProjectsSunshineResidencyRouteImport.update({
+    id: '/sunshine-residency',
+    path: '/sunshine-residency',
+    getParentRoute: () => ProjectsRoute,
+  } as any)
+const ProjectsSailajaSapphireRoute = ProjectsSailajaSapphireRouteImport.update({
+  id: '/sailaja-sapphire',
+  path: '/sailaja-sapphire',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsSailajaParadiseRoute = ProjectsSailajaParadiseRouteImport.update({
+  id: '/sailaja-paradise',
+  path: '/sailaja-paradise',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsMangalmurtiEnclaveRoute =
+  ProjectsMangalmurtiEnclaveRouteImport.update({
+    id: '/mangalmurti-enclave',
+    path: '/mangalmurti-enclave',
+    getParentRoute: () => ProjectsRoute,
+  } as any)
+const ProjectsMadhabMansionRoute = ProjectsMadhabMansionRouteImport.update({
+  id: '/madhab-mansion',
+  path: '/madhab-mansion',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsMaanavAbodeRoute = ProjectsMaanavAbodeRouteImport.update({
+  id: '/maanav-abode',
+  path: '/maanav-abode',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsMaanaavAbodeRoute = ProjectsMaanaavAbodeRouteImport.update({
+  id: '/maanaav-abode',
+  path: '/maanaav-abode',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsDurgaResidencyRoute = ProjectsDurgaResidencyRouteImport.update({
+  id: '/durga-residency',
+  path: '/durga-residency',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsBimaanArcadeRoute = ProjectsBimaanArcadeRouteImport.update({
+  id: '/bimaan-arcade',
+  path: '/bimaan-arcade',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsBhaskarRoute = ProjectsBhaskarRouteImport.update({
+  id: '/bhaskar',
+  path: '/bhaskar',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsBaneswarRoute = ProjectsBaneswarRouteImport.update({
+  id: '/baneswar',
+  path: '/baneswar',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsArupArcadiaRoute = ProjectsArupArcadiaRouteImport.update({
+  id: '/arup-arcadia',
+  path: '/arup-arcadia',
+  getParentRoute: () => ProjectsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/projects': typeof ProjectsRoute
+  '/projects': typeof ProjectsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projects/arup-arcadia': typeof ProjectsArupArcadiaRoute
+  '/projects/baneswar': typeof ProjectsBaneswarRoute
+  '/projects/bhaskar': typeof ProjectsBhaskarRoute
+  '/projects/bimaan-arcade': typeof ProjectsBimaanArcadeRoute
+  '/projects/durga-residency': typeof ProjectsDurgaResidencyRoute
+  '/projects/maanaav-abode': typeof ProjectsMaanaavAbodeRoute
+  '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
+  '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
+  '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
+  '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/projects': typeof ProjectsRoute
+  '/projects': typeof ProjectsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projects/arup-arcadia': typeof ProjectsArupArcadiaRoute
+  '/projects/baneswar': typeof ProjectsBaneswarRoute
+  '/projects/bhaskar': typeof ProjectsBhaskarRoute
+  '/projects/bimaan-arcade': typeof ProjectsBimaanArcadeRoute
+  '/projects/durga-residency': typeof ProjectsDurgaResidencyRoute
+  '/projects/maanaav-abode': typeof ProjectsMaanaavAbodeRoute
+  '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
+  '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
+  '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
+  '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/projects': typeof ProjectsRoute
+  '/projects': typeof ProjectsRouteWithChildren
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/projects/arup-arcadia': typeof ProjectsArupArcadiaRoute
+  '/projects/baneswar': typeof ProjectsBaneswarRoute
+  '/projects/bhaskar': typeof ProjectsBhaskarRoute
+  '/projects/bimaan-arcade': typeof ProjectsBimaanArcadeRoute
+  '/projects/durga-residency': typeof ProjectsDurgaResidencyRoute
+  '/projects/maanaav-abode': typeof ProjectsMaanaavAbodeRoute
+  '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
+  '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
+  '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
+  '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +200,40 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/sitemap.xml'
+    | '/projects/arup-arcadia'
+    | '/projects/baneswar'
+    | '/projects/bhaskar'
+    | '/projects/bimaan-arcade'
+    | '/projects/durga-residency'
+    | '/projects/maanaav-abode'
+    | '/projects/maanav-abode'
+    | '/projects/madhab-mansion'
+    | '/projects/mangalmurti-enclave'
+    | '/projects/sailaja-paradise'
+    | '/projects/sailaja-sapphire'
+    | '/projects/sunshine-residency'
+    | '/projects/xopun-aloy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/projects' | '/services' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/projects'
+    | '/services'
+    | '/sitemap.xml'
+    | '/projects/arup-arcadia'
+    | '/projects/baneswar'
+    | '/projects/bhaskar'
+    | '/projects/bimaan-arcade'
+    | '/projects/durga-residency'
+    | '/projects/maanaav-abode'
+    | '/projects/maanav-abode'
+    | '/projects/madhab-mansion'
+    | '/projects/mangalmurti-enclave'
+    | '/projects/sailaja-paradise'
+    | '/projects/sailaja-sapphire'
+    | '/projects/sunshine-residency'
+    | '/projects/xopun-aloy'
   id:
     | '__root__'
     | '/'
@@ -91,13 +242,26 @@ export interface FileRouteTypes {
     | '/projects'
     | '/services'
     | '/sitemap.xml'
+    | '/projects/arup-arcadia'
+    | '/projects/baneswar'
+    | '/projects/bhaskar'
+    | '/projects/bimaan-arcade'
+    | '/projects/durga-residency'
+    | '/projects/maanaav-abode'
+    | '/projects/maanav-abode'
+    | '/projects/madhab-mansion'
+    | '/projects/mangalmurti-enclave'
+    | '/projects/sailaja-paradise'
+    | '/projects/sailaja-sapphire'
+    | '/projects/sunshine-residency'
+    | '/projects/xopun-aloy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ProjectsRoute: typeof ProjectsRoute
+  ProjectsRoute: typeof ProjectsRouteWithChildren
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -146,17 +310,154 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/xopun-aloy': {
+      id: '/projects/xopun-aloy'
+      path: '/xopun-aloy'
+      fullPath: '/projects/xopun-aloy'
+      preLoaderRoute: typeof ProjectsXopunAloyRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/sunshine-residency': {
+      id: '/projects/sunshine-residency'
+      path: '/sunshine-residency'
+      fullPath: '/projects/sunshine-residency'
+      preLoaderRoute: typeof ProjectsSunshineResidencyRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/sailaja-sapphire': {
+      id: '/projects/sailaja-sapphire'
+      path: '/sailaja-sapphire'
+      fullPath: '/projects/sailaja-sapphire'
+      preLoaderRoute: typeof ProjectsSailajaSapphireRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/sailaja-paradise': {
+      id: '/projects/sailaja-paradise'
+      path: '/sailaja-paradise'
+      fullPath: '/projects/sailaja-paradise'
+      preLoaderRoute: typeof ProjectsSailajaParadiseRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/mangalmurti-enclave': {
+      id: '/projects/mangalmurti-enclave'
+      path: '/mangalmurti-enclave'
+      fullPath: '/projects/mangalmurti-enclave'
+      preLoaderRoute: typeof ProjectsMangalmurtiEnclaveRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/madhab-mansion': {
+      id: '/projects/madhab-mansion'
+      path: '/madhab-mansion'
+      fullPath: '/projects/madhab-mansion'
+      preLoaderRoute: typeof ProjectsMadhabMansionRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/maanav-abode': {
+      id: '/projects/maanav-abode'
+      path: '/maanav-abode'
+      fullPath: '/projects/maanav-abode'
+      preLoaderRoute: typeof ProjectsMaanavAbodeRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/maanaav-abode': {
+      id: '/projects/maanaav-abode'
+      path: '/maanaav-abode'
+      fullPath: '/projects/maanaav-abode'
+      preLoaderRoute: typeof ProjectsMaanaavAbodeRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/durga-residency': {
+      id: '/projects/durga-residency'
+      path: '/durga-residency'
+      fullPath: '/projects/durga-residency'
+      preLoaderRoute: typeof ProjectsDurgaResidencyRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/bimaan-arcade': {
+      id: '/projects/bimaan-arcade'
+      path: '/bimaan-arcade'
+      fullPath: '/projects/bimaan-arcade'
+      preLoaderRoute: typeof ProjectsBimaanArcadeRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/bhaskar': {
+      id: '/projects/bhaskar'
+      path: '/bhaskar'
+      fullPath: '/projects/bhaskar'
+      preLoaderRoute: typeof ProjectsBhaskarRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/baneswar': {
+      id: '/projects/baneswar'
+      path: '/baneswar'
+      fullPath: '/projects/baneswar'
+      preLoaderRoute: typeof ProjectsBaneswarRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/arup-arcadia': {
+      id: '/projects/arup-arcadia'
+      path: '/arup-arcadia'
+      fullPath: '/projects/arup-arcadia'
+      preLoaderRoute: typeof ProjectsArupArcadiaRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
   }
 }
+
+interface ProjectsRouteChildren {
+  ProjectsArupArcadiaRoute: typeof ProjectsArupArcadiaRoute
+  ProjectsBaneswarRoute: typeof ProjectsBaneswarRoute
+  ProjectsBhaskarRoute: typeof ProjectsBhaskarRoute
+  ProjectsBimaanArcadeRoute: typeof ProjectsBimaanArcadeRoute
+  ProjectsDurgaResidencyRoute: typeof ProjectsDurgaResidencyRoute
+  ProjectsMaanaavAbodeRoute: typeof ProjectsMaanaavAbodeRoute
+  ProjectsMaanavAbodeRoute: typeof ProjectsMaanavAbodeRoute
+  ProjectsMadhabMansionRoute: typeof ProjectsMadhabMansionRoute
+  ProjectsMangalmurtiEnclaveRoute: typeof ProjectsMangalmurtiEnclaveRoute
+  ProjectsSailajaParadiseRoute: typeof ProjectsSailajaParadiseRoute
+  ProjectsSailajaSapphireRoute: typeof ProjectsSailajaSapphireRoute
+  ProjectsSunshineResidencyRoute: typeof ProjectsSunshineResidencyRoute
+  ProjectsXopunAloyRoute: typeof ProjectsXopunAloyRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsArupArcadiaRoute: ProjectsArupArcadiaRoute,
+  ProjectsBaneswarRoute: ProjectsBaneswarRoute,
+  ProjectsBhaskarRoute: ProjectsBhaskarRoute,
+  ProjectsBimaanArcadeRoute: ProjectsBimaanArcadeRoute,
+  ProjectsDurgaResidencyRoute: ProjectsDurgaResidencyRoute,
+  ProjectsMaanaavAbodeRoute: ProjectsMaanaavAbodeRoute,
+  ProjectsMaanavAbodeRoute: ProjectsMaanavAbodeRoute,
+  ProjectsMadhabMansionRoute: ProjectsMadhabMansionRoute,
+  ProjectsMangalmurtiEnclaveRoute: ProjectsMangalmurtiEnclaveRoute,
+  ProjectsSailajaParadiseRoute: ProjectsSailajaParadiseRoute,
+  ProjectsSailajaSapphireRoute: ProjectsSailajaSapphireRoute,
+  ProjectsSunshineResidencyRoute: ProjectsSunshineResidencyRoute,
+  ProjectsXopunAloyRoute: ProjectsXopunAloyRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ProjectsRoute: ProjectsRoute,
+  ProjectsRoute: ProjectsRouteWithChildren,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

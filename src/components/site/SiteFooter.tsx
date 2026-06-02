@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Shield } from "lucide-react";
+import sailajaLogo from "@/assets/sailajaLogo.webp";
 
 export function SiteFooter() {
   return (
@@ -7,10 +8,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 bg-[var(--primary)] flex items-center justify-center font-black text-[var(--charcoal)]">S</div>
-            <span className="font-extrabold text-lg text-white" style={{ fontFamily: "Montserrat" }}>
-              SAILAJA<span className="text-[var(--primary)]">.</span>
-            </span>
+            <img src={sailajaLogo} alt="Sailaja Constructions" className="h-16 w-auto brightness-0 invert" />
           </div>
           <p className="text-sm leading-relaxed">
             A trusted Construction Company in Guwahati and Builders in Nagaon, delivering residential, commercial and interior projects across Assam since 2010.
