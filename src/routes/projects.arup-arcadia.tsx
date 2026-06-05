@@ -7,6 +7,8 @@ import { CtaBand } from "@/components/site/PageHero";
 import { fadeUp, fadeIn, slideLeft, slideRight, staggerFast, staggerMedium, scaleFade } from "@/lib/animations";
 import { useIsMobile } from "@/hooks/use-mobile";
 import arupArcadiaImage from "@/assets/aruparcadiaimg/aruparcadia.webp";
+import groundFloorPlanImage from "@/assets/aruparcadiaimg/groundfloorplan.webp";
+import typicalFloorPlanImage from "@/assets/aruparcadiaimg/typicalfloorplan.webp";
 
 export const Route = createFileRoute("/projects/arup-arcadia")({
   head: () => ({
@@ -400,13 +402,13 @@ function ProjectDetailPage() {
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
                   <Img
-                    src="/images/projects/arup-arcadia/floor-plan-unit-a.jpg"
+                    src={groundFloorPlanImage}
                     alt="Unit A Floor Plan - 1,315 sq.ft"
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
-                  <div className="text-sm font-bold text-[var(--charcoal)]">Unit A — 1,315 sq.ft</div>
+                  <div className="text-sm font-bold text-[var(--charcoal)]">Ground Floor Plan</div>
                   <div className="text-xs text-muted-foreground mt-1 flex items-center justify-center gap-1">
                     <Maximize2 size={12} /> Pinch to zoom
                   </div>
@@ -441,13 +443,13 @@ function ProjectDetailPage() {
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
                   <Img
-                    src="/images/projects/arup-arcadia/floor-plan-unit-b.jpg"
+                    src={typicalFloorPlanImage}
                     alt="Unit B Floor Plan - 1,230 sq.ft"
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
-                  <div className="text-sm font-bold text-[var(--charcoal)]">Unit B — 1,230 sq.ft</div>
+                  <div className="text-sm font-bold text-[var(--charcoal)]">Typical Floor Plan</div>
                   <div className="text-xs text-muted-foreground mt-1 flex items-center justify-center gap-1">
                     <Maximize2 size={12} /> Pinch to zoom
                   </div>

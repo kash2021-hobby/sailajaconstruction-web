@@ -47,7 +47,7 @@ export function SiteFooter() {
           <h4 className="text-white text-sm uppercase tracking-widest mb-5" style={{ fontFamily: "Montserrat" }}>Contact</h4>
           <ul className="space-y-3 text-sm">
             <li className="flex gap-3"><MapPin size={16} className="text-[var(--primary)] mt-0.5 shrink-0" /> Flat No. G1, Mangalmurti Enclave, Sachal, Guwahati, Assam 781022</li>
-            <li className="flex gap-3"><Mail size={16} className="text-[var(--primary)] shrink-0" /> info@sailajaconstructions.com</li>
+            <li className="flex gap-3"><Mail size={16} className="text-[var(--primary)] shrink-0" /> sailajaconstruction@gmail.com</li>
             <li className="flex gap-3"><Phone size={16} className="text-[var(--primary)] shrink-0" /> Guwahati &amp; Nagaon</li>
           </ul>
         </div>
@@ -60,6 +60,7 @@ export function SiteFooter() {
             <span>RERA Certified Builder &middot; Registered under Assam RERA</span>
           </div>
           <div>&copy; {new Date().getFullYear()} Sailaja Constructions. All rights reserved.</div>
+          <div>Website Developed and Managed by <a href="https://ltabai.in/" target="_blank" rel="noopener noreferrer" className="text-[var(--primary)] hover:underline">Ltabai.in</a></div>
         </div>
       </div>
     </footer>

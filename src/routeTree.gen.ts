@@ -17,8 +17,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsXopunAloyRouteImport } from './routes/projects.xopun-aloy'
 import { Route as ProjectsSunshineResidencyRouteImport } from './routes/projects.sunshine-residency'
+import { Route as ProjectsShreeBishnuCommercialRouteImport } from './routes/projects.shree-bishnu-commercial'
 import { Route as ProjectsSailajaSapphireRouteImport } from './routes/projects.sailaja-sapphire'
+import { Route as ProjectsSailajaResidencyRouteImport } from './routes/projects.sailaja-residency'
 import { Route as ProjectsSailajaParadiseRouteImport } from './routes/projects.sailaja-paradise'
+import { Route as ProjectsMhComplexRouteImport } from './routes/projects.mh-complex'
 import { Route as ProjectsMangalmurtiEnclaveRouteImport } from './routes/projects.mangalmurti-enclave'
 import { Route as ProjectsMadhabMansionRouteImport } from './routes/projects.madhab-mansion'
 import { Route as ProjectsMaanavAbodeRouteImport } from './routes/projects.maanav-abode'
@@ -70,14 +73,31 @@ const ProjectsSunshineResidencyRoute =
     path: '/sunshine-residency',
     getParentRoute: () => ProjectsRoute,
   } as any)
+const ProjectsShreeBishnuCommercialRoute =
+  ProjectsShreeBishnuCommercialRouteImport.update({
+    id: '/shree-bishnu-commercial',
+    path: '/shree-bishnu-commercial',
+    getParentRoute: () => ProjectsRoute,
+  } as any)
 const ProjectsSailajaSapphireRoute = ProjectsSailajaSapphireRouteImport.update({
   id: '/sailaja-sapphire',
   path: '/sailaja-sapphire',
   getParentRoute: () => ProjectsRoute,
 } as any)
+const ProjectsSailajaResidencyRoute =
+  ProjectsSailajaResidencyRouteImport.update({
+    id: '/sailaja-residency',
+    path: '/sailaja-residency',
+    getParentRoute: () => ProjectsRoute,
+  } as any)
 const ProjectsSailajaParadiseRoute = ProjectsSailajaParadiseRouteImport.update({
   id: '/sailaja-paradise',
   path: '/sailaja-paradise',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const ProjectsMhComplexRoute = ProjectsMhComplexRouteImport.update({
+  id: '/mh-complex',
+  path: '/mh-complex',
   getParentRoute: () => ProjectsRoute,
 } as any)
 const ProjectsMangalmurtiEnclaveRoute =
@@ -143,8 +163,11 @@ export interface FileRoutesByFullPath {
   '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
   '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
   '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/mh-complex': typeof ProjectsMhComplexRoute
   '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-residency': typeof ProjectsSailajaResidencyRoute
   '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/shree-bishnu-commercial': typeof ProjectsShreeBishnuCommercialRoute
   '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
   '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
@@ -164,8 +187,11 @@ export interface FileRoutesByTo {
   '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
   '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
   '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/mh-complex': typeof ProjectsMhComplexRoute
   '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-residency': typeof ProjectsSailajaResidencyRoute
   '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/shree-bishnu-commercial': typeof ProjectsShreeBishnuCommercialRoute
   '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
   '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
@@ -186,8 +212,11 @@ export interface FileRoutesById {
   '/projects/maanav-abode': typeof ProjectsMaanavAbodeRoute
   '/projects/madhab-mansion': typeof ProjectsMadhabMansionRoute
   '/projects/mangalmurti-enclave': typeof ProjectsMangalmurtiEnclaveRoute
+  '/projects/mh-complex': typeof ProjectsMhComplexRoute
   '/projects/sailaja-paradise': typeof ProjectsSailajaParadiseRoute
+  '/projects/sailaja-residency': typeof ProjectsSailajaResidencyRoute
   '/projects/sailaja-sapphire': typeof ProjectsSailajaSapphireRoute
+  '/projects/shree-bishnu-commercial': typeof ProjectsShreeBishnuCommercialRoute
   '/projects/sunshine-residency': typeof ProjectsSunshineResidencyRoute
   '/projects/xopun-aloy': typeof ProjectsXopunAloyRoute
 }
@@ -209,8 +238,11 @@ export interface FileRouteTypes {
     | '/projects/maanav-abode'
     | '/projects/madhab-mansion'
     | '/projects/mangalmurti-enclave'
+    | '/projects/mh-complex'
     | '/projects/sailaja-paradise'
+    | '/projects/sailaja-residency'
     | '/projects/sailaja-sapphire'
+    | '/projects/shree-bishnu-commercial'
     | '/projects/sunshine-residency'
     | '/projects/xopun-aloy'
   fileRoutesByTo: FileRoutesByTo
@@ -230,8 +262,11 @@ export interface FileRouteTypes {
     | '/projects/maanav-abode'
     | '/projects/madhab-mansion'
     | '/projects/mangalmurti-enclave'
+    | '/projects/mh-complex'
     | '/projects/sailaja-paradise'
+    | '/projects/sailaja-residency'
     | '/projects/sailaja-sapphire'
+    | '/projects/shree-bishnu-commercial'
     | '/projects/sunshine-residency'
     | '/projects/xopun-aloy'
   id:
@@ -251,8 +286,11 @@ export interface FileRouteTypes {
     | '/projects/maanav-abode'
     | '/projects/madhab-mansion'
     | '/projects/mangalmurti-enclave'
+    | '/projects/mh-complex'
     | '/projects/sailaja-paradise'
+    | '/projects/sailaja-residency'
     | '/projects/sailaja-sapphire'
+    | '/projects/shree-bishnu-commercial'
     | '/projects/sunshine-residency'
     | '/projects/xopun-aloy'
   fileRoutesById: FileRoutesById
@@ -324,6 +362,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSunshineResidencyRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/projects/shree-bishnu-commercial': {
+      id: '/projects/shree-bishnu-commercial'
+      path: '/shree-bishnu-commercial'
+      fullPath: '/projects/shree-bishnu-commercial'
+      preLoaderRoute: typeof ProjectsShreeBishnuCommercialRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
     '/projects/sailaja-sapphire': {
       id: '/projects/sailaja-sapphire'
       path: '/sailaja-sapphire'
@@ -331,11 +376,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSailajaSapphireRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/projects/sailaja-residency': {
+      id: '/projects/sailaja-residency'
+      path: '/sailaja-residency'
+      fullPath: '/projects/sailaja-residency'
+      preLoaderRoute: typeof ProjectsSailajaResidencyRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
     '/projects/sailaja-paradise': {
       id: '/projects/sailaja-paradise'
       path: '/sailaja-paradise'
       fullPath: '/projects/sailaja-paradise'
       preLoaderRoute: typeof ProjectsSailajaParadiseRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/projects/mh-complex': {
+      id: '/projects/mh-complex'
+      path: '/mh-complex'
+      fullPath: '/projects/mh-complex'
+      preLoaderRoute: typeof ProjectsMhComplexRouteImport
       parentRoute: typeof ProjectsRoute
     }
     '/projects/mangalmurti-enclave': {
@@ -414,8 +473,11 @@ interface ProjectsRouteChildren {
   ProjectsMaanavAbodeRoute: typeof ProjectsMaanavAbodeRoute
   ProjectsMadhabMansionRoute: typeof ProjectsMadhabMansionRoute
   ProjectsMangalmurtiEnclaveRoute: typeof ProjectsMangalmurtiEnclaveRoute
+  ProjectsMhComplexRoute: typeof ProjectsMhComplexRoute
   ProjectsSailajaParadiseRoute: typeof ProjectsSailajaParadiseRoute
+  ProjectsSailajaResidencyRoute: typeof ProjectsSailajaResidencyRoute
   ProjectsSailajaSapphireRoute: typeof ProjectsSailajaSapphireRoute
+  ProjectsShreeBishnuCommercialRoute: typeof ProjectsShreeBishnuCommercialRoute
   ProjectsSunshineResidencyRoute: typeof ProjectsSunshineResidencyRoute
   ProjectsXopunAloyRoute: typeof ProjectsXopunAloyRoute
 }
@@ -430,8 +492,11 @@ const ProjectsRouteChildren: ProjectsRouteChildren = {
   ProjectsMaanavAbodeRoute: ProjectsMaanavAbodeRoute,
   ProjectsMadhabMansionRoute: ProjectsMadhabMansionRoute,
   ProjectsMangalmurtiEnclaveRoute: ProjectsMangalmurtiEnclaveRoute,
+  ProjectsMhComplexRoute: ProjectsMhComplexRoute,
   ProjectsSailajaParadiseRoute: ProjectsSailajaParadiseRoute,
+  ProjectsSailajaResidencyRoute: ProjectsSailajaResidencyRoute,
   ProjectsSailajaSapphireRoute: ProjectsSailajaSapphireRoute,
+  ProjectsShreeBishnuCommercialRoute: ProjectsShreeBishnuCommercialRoute,
   ProjectsSunshineResidencyRoute: ProjectsSunshineResidencyRoute,
   ProjectsXopunAloyRoute: ProjectsXopunAloyRoute,
 }

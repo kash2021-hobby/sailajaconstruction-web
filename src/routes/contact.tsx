@@ -40,8 +40,8 @@ function ContactPage() {
 
             <div className="mt-10 space-y-5">
               {[
-                { icon: MapPin, label: "Visit us", value: "Flat No. G1, Mangalmurti Enclave, Sachal, Guwahati, Assam 781022" },
-                { icon: Mail, label: "Email", value: "info@sailajaconstructions.com" },
+                { icon: MapPin, label: "Visit us", value: "Flat No-G1, Mangalmurti Enclave, Rangamatir Path, Sachal, Guwahati-781022." },
+                { icon: Mail, label: "Email", value: "sailajaconstruction@gmail.com" },
                 { icon: Phone, label: "Service Areas", value: "Guwahati & Nagaon, Assam" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex gap-4">
@@ -70,6 +70,15 @@ function ContactPage() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  const form = e.currentTarget;
+                  const data = new FormData(form);
+                  const firstName = data.get("firstName") as string;
+                  const lastName = data.get("lastName") as string;
+                  const email = data.get("email") as string;
+                  const phone = data.get("phone") as string;
+                  const message = data.get("message") as string;
+                  const body = `*New Enquiry from Sailaja Constructions Website*%0A%0A*Name:* ${firstName} ${lastName}%0A*Email:* ${email}%0A*Phone:* ${phone}%0A*Message:* ${message}`;
+                  window.open(`https://wa.me/918471923990?text=${body}`, "_blank");
                   setSubmitted(true);
                 }}
                 className="space-y-5"
@@ -111,7 +120,7 @@ function ContactPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {[
               { icon: MapPin, label: "Address", value: "Sachal, Guwahati, Assam 781022" },
-              { icon: Mail, label: "Send Email", value: "info@sailajaconstructions.com" },
+              { icon: Mail, label: "Send Email", value: "sailajaconstruction@gmail.com" },
               { icon: Phone, label: "Service Area", value: "Guwahati & Nagaon" },
               { icon: Instagram, label: "Follow Us", value: "social", social: true },
             ].map(({ icon: Icon, label, value, social }) => (
@@ -136,7 +145,7 @@ function ContactPage() {
           <div className="aspect-[16/7] w-full overflow-hidden border-2 border-[var(--charcoal)]">
             <iframe
               title="Sailaja Constructions location in Sachal, Guwahati"
-              src="https://www.google.com/maps?q=Sachal,+Guwahati,+Assam+781022&output=embed"
+              src="https://www.google.com/maps?q=4RV6%2BG4R+Bormotoria+Guwahati+Assam+781036&output=embed"
               className="w-full h-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

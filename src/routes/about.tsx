@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import CountUp from "react-countup";
 import { CheckCircle2, Flag, HeartHandshake, Target, Phone } from "lucide-react";
 import { PageHero, CtaBand } from "@/components/site/PageHero";
 import { fadeUp, slideLeft, slideRight, staggerFast, scaleFade } from "@/lib/animations";
@@ -9,6 +10,14 @@ import teamImg from "@/assets/about-team.jpg";
 import sapphireImg from "@/assets/project-sapphire.jpg";
 import durgaImg from "@/assets/project-durga.jpg";
 import xopunImg from "@/assets/project-xopun.jpg";
+import madhabImg from "@/assets/madhabmansionimg/madhobmansion.webp";
+import commercialImg from "@/assets/fashioncityimg.webp";
+import bimaanImg from "@/assets/bimaanarcadeimg/bimanarcadeimg.webp";
+import teamManashImg from "@/assets/ourteam/team-manash.jpg";
+import teamMridulaImg from "@/assets/ourteam/team-mridula.jpg";
+import teamHimangshuImg from "@/assets/ourteam/team-himangshu.jpg";
+import teamBishalImg from "@/assets/ourteam/team-bishal.jpg";
+import teamAnupamImg from "@/assets/ourteam/team-anupam.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -38,6 +47,8 @@ function AboutPage() {
   const sectionViewport = { once: true, amount: 0.2 as const };
   const animY = isMobile ? 20 : 30;
   const fadeUpMobile = { hidden: { opacity: 0, y: animY }, visible: { opacity: 1, y: 0 } };
+  const sixteenRef = useRef<HTMLDivElement>(null);
+  const sixteenInView = useInView(sixteenRef, { once: true });
 
   return (
     <>
@@ -60,9 +71,9 @@ function AboutPage() {
             viewport={sectionViewport}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            {/* Layer 1 — Background card (empty, decorative) */}
+            {/* Layer 1 — Background card with Bimaan Arcade image */}
             <div
-              className="absolute rounded-2xl shadow-lg bg-[#F5F5F5]"
+              className="absolute rounded-2xl shadow-lg overflow-hidden"
               style={{
                 width: isMobile ? 120 : 200,
                 height: isMobile ? 80 : 130,
@@ -70,7 +81,9 @@ function AboutPage() {
                 left: 0,
                 zIndex: 1,
               }}
-            />
+            >
+              <Img src={bimaanImg} alt="Bimaan Arcade" className="w-full h-full object-cover" />
+            </div>
 
             {/* Layer 2 — Main building photo */}
             <div
@@ -84,14 +97,15 @@ function AboutPage() {
               }}
             >
               <Img
-                src="/images/about/about-building-main.jpg"
-                alt="Main Building Photo — TODO: Add src/assets/aboutimg/about-building-main.jpg"
+                src={madhabImg}
+                alt="Sailaja's Madhab Mansion"
                 className="w-full h-full object-cover"
               />
             </div>
 
             {/* Layer 3 — Secondary building photo with golden tint + 16+ text */}
             <div
+              ref={sixteenRef}
               className="absolute rounded-2xl overflow-hidden shadow-lg"
               style={{
                 width: isMobile ? 200 : 350,
@@ -103,8 +117,8 @@ function AboutPage() {
             >
               <div className="relative w-full h-full">
                 <Img
-                  src="/images/about/about-building-secondary.jpg"
-                  alt="Second Building Photo — TODO: Add src/assets/aboutimg/about-building-secondary.jpg"
+                  src={commercialImg}
+                  alt="Commercial Construction"
                   className="w-full h-full object-cover"
                 />
                 {/* Warm sepia/golden tint overlay */}
@@ -122,7 +136,7 @@ function AboutPage() {
                       textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                     }}
                   >
-                    16+
+                    {sixteenInView && <CountUp end={16} suffix="+" duration={3} />}
                   </div>
                   <div
                     className="text-white font-normal tracking-wider mt-1"
@@ -172,38 +186,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* ─── SECTION 3: INTRO (existing) ─── */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-6xl grid lg:grid-cols-2 gap-12">
-          <h2 className="text-4xl md:text-5xl text-[var(--charcoal)] leading-tight">
-            Built in Guwahati. Trusted Across Assam.
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Sailaja Constructions is a Sole Proprietorship founded in 2010 and led by Mr. Manash Pratim Talukdar. From our base in Sachal, Guwahati, we deliver residential and commercial construction services across Guwahati, Nagaon and Central Assam — combining honest timelines, clear communication and work that holds up inside and out.
-          </p>
-        </div>
 
-        <div className="mx-auto max-w-6xl mt-14 grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div className="bg-[var(--charcoal)] text-white p-8">
-            <div className="text-xs tracking-[0.25em] uppercase text-[var(--primary)] font-bold" style={{ fontFamily: "Montserrat" }}>Projects</div>
-            <div className="text-5xl font-black mt-3">15+</div>
-            <p className="text-sm text-white/70 mt-3">Completed residential and commercial projects across Guwahati and Nagaon.</p>
-          </div>
-          <div className="row-span-2"><img src={sapphireImg} alt="Sailaja's Sapphire" className="w-full h-full object-cover" loading="lazy" width={1200} height={900} /></div>
-          <div className="bg-[var(--charcoal)] text-white p-8">
-            <div className="text-xs tracking-[0.25em] uppercase text-[var(--primary)] font-bold" style={{ fontFamily: "Montserrat" }}>Happy Clients</div>
-            <div className="text-5xl font-black mt-3">400+</div>
-            <p className="text-sm text-white/70 mt-3">Families and businesses who trusted us with their dream space.</p>
-          </div>
-          <div><img src={durgaImg} alt="Durga Residency" className="w-full h-full object-cover aspect-square" loading="lazy" width={1200} height={1200} /></div>
-          <div className="bg-[var(--primary)] text-[var(--charcoal)] p-8">
-            <div className="text-xs tracking-[0.25em] uppercase font-bold" style={{ fontFamily: "Montserrat" }}>Commitment</div>
-            <div className="text-5xl font-black mt-3">110%</div>
-            <p className="text-sm mt-3">We go above and beyond — your project, your goals, your satisfaction first.</p>
-          </div>
-          <div><img src={xopunImg} alt="Xopun Aloy" className="w-full h-full object-cover aspect-square" loading="lazy" width={1200} height={1200} /></div>
-        </div>
-      </section>
 
       {/* ─── SECTION 4: MISSION VISION VALUES (existing) ─── */}
       <section className="py-24 px-6 bg-[var(--soft-gray)]">
@@ -297,8 +280,8 @@ function AboutPage() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Img
-                  src="/images/about/team-manash.jpg"
-                  alt="Mr. Manash Pratim Talukdar — TODO: Add src/assets/aboutimg/team-manash.jpg"
+                  src={teamManashImg}
+                  alt="Mr. Manash Pratim Talukdar"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)]/90 via-transparent to-transparent" />
@@ -321,8 +304,8 @@ function AboutPage() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Img
-                  src="/images/about/team-mridula.jpg"
-                  alt="Mridula Gogoi — TODO: Add src/assets/aboutimg/team-mridula.jpg"
+                  src={teamMridulaImg}
+                  alt="Mridula Gogoi"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)]/90 via-transparent to-transparent" />
@@ -348,8 +331,8 @@ function AboutPage() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Img
-                  src="/images/about/team-himangshu.jpg"
-                  alt="Himangshu Kalita — TODO: Add src/assets/aboutimg/team-himangshu.jpg"
+                  src={teamHimangshuImg}
+                  alt="Himangshu Kalita"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)]/90 via-transparent to-transparent" />
@@ -375,8 +358,8 @@ function AboutPage() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Img
-                  src="/images/about/team-bishal.jpg"
-                  alt="Bishal Kalita — TODO: Add src/assets/aboutimg/team-bishal.jpg"
+                  src={teamBishalImg}
+                  alt="Bishal Kalita"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)]/90 via-transparent to-transparent" />
@@ -402,8 +385,8 @@ function AboutPage() {
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Img
-                  src="/images/about/team-anupam.jpg"
-                  alt="Anupam Kshatriya — TODO: Add src/assets/aboutimg/team-anupam.jpg"
+                  src={teamAnupamImg}
+                  alt="Anupam Kshatriya"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)]/90 via-transparent to-transparent" />

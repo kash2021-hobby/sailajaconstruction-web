@@ -1,107 +1,88 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin, Maximize, Clock, Home, ArrowRight, Building2, Layout, ShowerHead, CookingPot, DoorOpen, Wind, PaintBucket, Droplet, Zap, ArrowUpDown, ExternalLink, ShieldCheck } from "lucide-react";
+import { MapPin, Maximize, Clock, Home, ArrowRight, Building2, Layout, ShowerHead, CookingPot, DoorOpen, Wind, PaintBucket, Droplet, Zap, ExternalLink, ShieldCheck } from "lucide-react";
 import { HeroCurve } from "@/components/HeroCurve";
 import { CtaBand } from "@/components/site/PageHero";
 import { fadeUp, slideLeft, slideRight, staggerFast, staggerMedium, scaleFade } from "@/lib/animations";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import typeAImage from "@/assets/sailajasapphireimg/typea.webp";
-import typeBImage from "@/assets/sailajasapphireimg/typeb.webp";
-import typeCImage from "@/assets/sailajasapphireimg/typec.webp";
-import typeDImage from "@/assets/sailajasapphireimg/typed.webp";
-import typicalFloorPlanImage from "@/assets/sailajasapphireimg/typicalfloorplan.webp";
-import sitePlanImage from "@/assets/sailajasapphireimg/siteplan.webp";
-import rera1Image from "@/assets/sailajasapphireimg/rera1.webp";
-import rera2Image from "@/assets/sailajasapphireimg/rera2.webp";
-import heroImage from "@/assets/sailajasapphireimg/saphire.webp";
-
-const unitPlans = [typeAImage, typeBImage, typeCImage, typeDImage];
-
-export const Route = createFileRoute("/projects/sailaja-sapphire")({
+export const Route = createFileRoute("/projects/sailaja-residency")({
   head: () => ({
     meta: [
-      { title: "Sailaja's Sapphire — Premium 2 & 3BHK in Panjabari, Guwahati | Sailaja Constructions" },
-      { name: "description", content: "Explore Sailaja's Sapphire — an ongoing residential project at Namghar Path, Panjabari, Guwahati offering 2 & 3BHK apartments." },
-      { property: "og:title", content: "Sailaja's Sapphire — Premium 2 & 3BHK Residences at Panjabari, Guwahati" },
-      { property: "og:description", content: "A 5-storey residential development offering thoughtfully designed 2 & 3BHK apartments at Namghar Path, Panjabari, Guwahati." },
-      { property: "og:url", content: "/projects/sailaja-sapphire" },
+      { title: "Sailaja Residency — Premium Residences in Guwahati | Sailaja Constructions" },
+      { name: "description", content: "Explore Sailaja Residency — a residential project in Guwahati offering spacious apartments with quality construction." },
+      { property: "og:title", content: "Sailaja Residency — Premium Residences in Guwahati" },
+      { property: "og:description", content: "A thoughtfully designed residential development offering spacious apartments in Guwahati." },
+      { property: "og:url", content: "/projects/sailaja-residency" },
     ],
-    links: [{ rel: "canonical", href: "/projects/sailaja-sapphire" }],
+    links: [{ rel: "canonical", href: "/projects/sailaja-residency" }],
   }),
   component: ProjectDetailPage,
 });
 
-const reraNumber = "KM 103 OF 2024-2025";
-
 const propSummary = [
-  { icon: MapPin, label: "Location", value: "Panjabari, Guwahati" },
-  { icon: Maximize, label: "Area", value: "720 – 1020 Sq.Ft (BUA)" },
+  { icon: MapPin, label: "Location", value: "Guwahati, Assam" },
+  { icon: Maximize, label: "Area", value: "As per brochure" },
   { icon: Clock, label: "Status", value: "Ongoing" },
-  { icon: Home, label: "Type", value: "2 & 3 BHK Apartment" },
+  { icon: Home, label: "Type", value: "As per brochure" },
 ];
 
 const specs = [
   { label: "Project Type", value: "Residential" },
-  { label: "Configuration", value: "2 & 3 BHK" },
-  { label: "Floors", value: "1st – 5th (Typical)" },
-  { label: "Units Per Floor", value: "4 (A, B, C, D)" },
-  { label: "Lifts", value: "2" },
-  { label: "Staircases", value: "2" },
-  { label: "BUA Range", value: "720 – 1020 Sq.Ft" },
-  { label: "SUBA Range", value: "900 – 1275 Sq.Ft" },
-  { label: "Location", value: "Namghar Path, Panjabari, Guwahati" },
+  { label: "Configuration", value: "As per brochure" },
+  { label: "Units Per Floor", value: "As per brochure" },
+  { label: "Floors", value: "As per brochure" },
+  { label: "BUA Range", value: "As per brochure" },
+  { label: "SBUA Range", value: "As per brochure" },
+  { label: "Location", value: "Guwahati, Assam" },
   { label: "Status", value: "Ongoing" },
 ];
 
 const unitArooms: [string, string][] = [
-  ["Master Bedroom", "12' × 14'9\""],
-  ["Bedroom 2", "12' × 9'11\""],
-  ["Bedroom 3", "12' × 11'10\""],
-  ["Drawing cum Dining", '11\'5" × 21\'8"'],
-  ["Kitchen", '9\'10" × 6\'11"'],
-  ["Toilet 1", "8' × 4'7\""],
-  ["Toilet 2", '8\'10" × 4\'4"'],
-  ["Balcony 1", '11\'5" × 4\'5"'],
-  ["Balcony 2", '7\'3" × 2\'11"'],
-  ["Balcony 3", '5\'6" × 3\'11"'],
+  ["Living Room", "Per brochure"],
+  ["Dining Room", "Per brochure"],
+  ["Kitchen", "Per brochure"],
+  ["Master Bedroom", "Per brochure"],
+  ["Bedroom 2", "Per brochure"],
+  ["Toilet 1", "Per brochure"],
+  ["Toilet 2", "Per brochure"],
+  ["Balcony 1", "Per brochure"],
+  ["Balcony 2", "Per brochure"],
 ];
 
 const unitBrooms: [string, string][] = [
-  ["Master Bedroom", '14\'9" × 10\'10"'],
-  ["Bedroom 2", "12' × 10'10\""],
-  ["Bedroom 3", "12' × 10'2\""],
-  ["Drawing", '19\'8" × 8\'10"'],
-  ["Dining", '11\'7" × 6\'3"'],
-  ["Kitchen", '11\'10" × 5\'11"'],
-  ["Toilet 1", '8\'7" × 4\'11"'],
-  ["Toilet 2", '8\'2" × 4\'7"'],
-  ["Balcony 1", '9\'3" × 4\'1"'],
-  ["Balcony 2", '5\'5" × 5\'6"'],
+  ["Living Room", "Per brochure"],
+  ["Dining Room", "Per brochure"],
+  ["Kitchen", "Per brochure"],
+  ["Master Bedroom", "Per brochure"],
+  ["Bedroom 2", "Per brochure"],
+  ["Bedroom 3", "Per brochure"],
+  ["Toilet 1", "Per brochure"],
+  ["Toilet 2", "Per brochure"],
+  ["Balcony 1", "Per brochure"],
+  ["Balcony 2", "Per brochure"],
 ];
 
 const unitCrooms: [string, string][] = [
-  ["Master Bedroom", '13\'1" × 9\'10"'],
-  ["Bedroom 2", '9\'10" × 9\'10"'],
-  ["Drawing cum Dining", '22\'4" × 9\'11"'],
-  ["Kitchen", '6\'6" × 9\'11"'],
-  ["Toilet 1", '4\'7" × 6\'6"'],
-  ["Toilet 2", "6' × 4'7\""],
-  ["Balcony 1", '9\'10" × 2\'11"'],
-  ["Balcony 2", '10\'3" × 3\'11"'],
-  ["Balcony 3", '9\'11" × 2\'11"'],
+  ["Living cum Dining", "Per brochure"],
+  ["Kitchen", "Per brochure"],
+  ["Master Bedroom", "Per brochure"],
+  ["Bedroom 2", "Per brochure"],
+  ["Toilet 1", "Per brochure"],
+  ["Toilet 2", "Per brochure"],
+  ["Balcony", "Per brochure"],
 ];
 
 const unitDrooms: [string, string][] = [
-  ["Master Bedroom", '9\'10" × 15\'2"'],
-  ["Bedroom 2", '10\'4" × 9\'10"'],
-  ["Drawing cum Dining", '9\'10" × 17\'9"'],
-  ["Kitchen", '10\'4" × 5\'6"'],
-  ["Toilet 1", '6\'10" × 6\'2"'],
-  ["Toilet 2", '8\'4" × 3\'11"'],
-  ["Balcony 1", '10\'7" × 3\'11"'],
-  ["Balcony 2", '6\'6" × 4\'11"'],
+  ["Living cum Dining", "Per brochure"],
+  ["Kitchen", "Per brochure"],
+  ["Master Bedroom", "Per brochure"],
+  ["Bedroom 2", "Per brochure"],
+  ["Toilet 1", "Per brochure"],
+  ["Toilet 2", "Per brochure"],
+  ["Balcony", "Per brochure"],
+  ["Balcony 2", "Per brochure"],
 ];
 
 const specCategories = [
@@ -116,8 +97,8 @@ const specCategories = [
     title: "Floors",
     icon: Layout,
     items: [
-      "Vitrified flooring 600×600mm in drawing, dining, bedrooms, and kitchen.",
-      "Antiskid ceramic tiles 300×300mm in bathrooms.",
+      "Vitrified flooring 600mm×600mm in drawing, dining, bedrooms & kitchen.",
+      "Antiskid ceramic tiles 300mm×300mm in bathrooms.",
     ],
   },
   {
@@ -125,30 +106,30 @@ const specCategories = [
     icon: ShowerHead,
     items: [
       "Concealed CPVC plumbing and sanitary system.",
-      "White sanitary ware with quality water supply fittings.",
-      "Glazed wall tiles 7 ft high.",
+      "White sanitary ware with best-quality water supply fittings.",
+      "Glazed wall tiles 7 ft on wall.",
     ],
   },
   {
     title: "Kitchen",
     icon: CookingPot,
     items: [
-      "Marble/Granite kitchen slab with wall tiles two feet above.",
-      "Stainless steel sink with quality CP water supply fittings.",
+      "Marble/Granite kitchen slab and wall tiles two feet above slab.",
+      "Stainless steel sinks with quality CP water supply fittings.",
     ],
   },
   {
     title: "Doors",
     icon: DoorOpen,
     items: [
-      "Waterproof flush doors throughout.",
+      "Waterproof flush doors.",
     ],
   },
   {
     title: "Windows",
     icon: Wind,
     items: [
-      "Plain aluminum sliding windows with grill.",
+      "Plain aluminium sliding windows with grills.",
     ],
   },
   {
@@ -156,14 +137,14 @@ const specCategories = [
     icon: PaintBucket,
     items: [
       "Internal walls finished with POP.",
-      "External walls painted with quality cement paint as per builder's choice.",
+      "External walls painted with quality cement paint.",
     ],
   },
   {
     title: "Water Supply",
     icon: Droplet,
     items: [
-      "24 hours water supply ensured with overhead tank.",
+      "24-hour water supply ensured with overhead tank.",
     ],
   },
   {
@@ -173,26 +154,17 @@ const specCategories = [
       "Concealed wiring with modular switches.",
     ],
   },
-  {
-    title: "Lift & Staircase",
-    icon: ArrowUpDown,
-    items: [
-      "2 lifts and 2 staircases for enhanced convenience and safety.",
-    ],
-  },
 ];
 
 const paymentMilestones = [
-  { step: "01", title: "Booking Amount", percent: "₹2 Lacks", detail: "" },
-  { step: "02", title: "Agreement / Foundation", percent: "20% + GST", detail: "Booking amount adjusted" },
-  { step: "03", title: "At the time of 1st Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "04", title: "At the time of 2nd Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "05", title: "At the time of 3rd Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "06", title: "At the time of 4th Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "07", title: "At the time of 5th Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "08", title: "At the time of 6th Slab Casting", percent: "10% + GST", detail: "" },
-  { step: "09", title: "At the time of Wall Casting", percent: "15% + GST", detail: "" },
-  { step: "10", title: "At the time of Hand Over", percent: "5% + GST", detail: "" },
+  { step: "01", title: "Booking Amount", percent: "As per brochure", detail: "" },
+  { step: "02", title: "Agreement / Foundation", percent: "20%", detail: "Booking adjusted" },
+  { step: "03", title: "1st Slab Casting", percent: "15%", detail: "" },
+  { step: "04", title: "2nd Slab Casting", percent: "15%", detail: "" },
+  { step: "05", title: "3rd Slab Casting", percent: "15%", detail: "" },
+  { step: "06", title: "4th Slab Casting", percent: "15%", detail: "" },
+  { step: "07", title: "Wall Casting", percent: "15%", detail: "" },
+  { step: "08", title: "Handover", percent: "5%", detail: "" },
 ];
 
 function Img({ src, alt, className }: { src: string; alt: string; className?: string }) {
@@ -254,13 +226,13 @@ function ProjectDetailPage() {
                 ONGOING PROJECT
               </span>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight">
-                Sailaja's<br />Sapphire
+                Sailaja<br />Residency
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/80 font-semibold">
-                Premium 2 & 3 BHK Residences at Namghar Path, Panjabari, Guwahati
+                Premium Residences by Sailaja Construction, Guwahati
               </p>
               <p className="mt-3 text-sm md:text-base text-white/65 leading-relaxed max-w-xl">
-                Welcome to Sailaja's Sapphire — an elegant 5-storey residential development by Sailaja Construction at Namghar Path, Panjabari, Guwahati. Featuring thoughtfully designed 2 & 3 BHK apartments with R.C.C. seismic-resistant construction, premium finishes, dual lifts, and modern amenities throughout.
+                Sailaja Residency is a thoughtfully designed residential development by Sailaja Construction in Guwahati. The project offers spacious apartments with R.C.C. seismic-resistant frame structure, vitrified flooring, modular kitchens, and premium finishes throughout.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
@@ -273,7 +245,7 @@ function ProjectDetailPage() {
                   href="#floor-plans"
                   className="btn-outline w-full sm:w-auto justify-center min-h-[48px]"
                 >
-                  View Floor Plan
+                  View Gallery
                 </a>
               </div>
             </motion.div>
@@ -284,9 +256,7 @@ function ProjectDetailPage() {
               animate="visible"
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <div className="w-full aspect-[4/3] rounded-lg shadow-2xl bg-[var(--soft-gray)] overflow-hidden">
-                <Img src={heroImage} alt="Sailaja's Sapphire" className="w-full h-full object-cover" />
-              </div>
+              <div className="w-full aspect-[4/3] rounded-lg shadow-2xl bg-gradient-to-br from-[var(--soft-gray)] to-white" />
             </motion.div>
           </div>
         </div>
@@ -337,10 +307,10 @@ function ProjectDetailPage() {
           >
             <span className="eyebrow">About the Project</span>
             <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-[var(--charcoal)]">
-              Premium 2 & 3BHK Living at Panjabari, Guwahati
+              Premium Living at Sailaja Residency
             </h2>
             <p className="mt-5 text-sm md:text-base text-muted-foreground leading-relaxed">
-              Sailaja's Sapphire is an elegant 5-storey residential development crafted by Sailaja Construction at Namghar Path, Panjabari, Guwahati. Each floor features four thoughtfully designed apartments (Units A, B, C, and D) with R.C.C. seismic-resistant frame structure, vitrified flooring, modern modular kitchens, premium finishes, dual lifts, and dual staircases for enhanced convenience and safety.
+              Sailaja Residency is a thoughtfully designed residential development by Sailaja Construction in the heart of Guwahati. Featuring spacious apartments with R.C.C. seismic-resistant frame construction, premium vitrified flooring, modern modular kitchens, and high-quality finishes, every home is crafted to deliver lasting comfort and quality. The project offers an excellent location near schools, hospitals, and shopping centres, making it an ideal choice for families seeking a well-connected lifestyle.
             </p>
           </motion.div>
           <motion.div
@@ -383,10 +353,10 @@ function ProjectDetailPage() {
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             {[
-              { type: "UNIT A — 3BHK", area: "BUA: 1020 Sq.Ft | SUBA: 1275 Sq.Ft", rooms: unitArooms },
-              { type: "UNIT B — 3BHK", area: "BUA: 1000 Sq.Ft | SUBA: 1250 Sq.Ft", rooms: unitBrooms },
-              { type: "UNIT C — 2BHK", area: "BUA: 800 Sq.Ft | SUBA: 1000 Sq.Ft", rooms: unitCrooms },
-              { type: "UNIT D — 2BHK", area: "BUA: 720 Sq.Ft | SUBA: 900 Sq.Ft", rooms: unitDrooms },
+              { type: "UNIT A", area: "BUA: Per brochure | SBUA: Per brochure", rooms: unitArooms },
+              { type: "UNIT B", area: "BUA: Per brochure | SBUA: Per brochure", rooms: unitBrooms },
+              { type: "UNIT C", area: "BUA: Per brochure | SBUA: Per brochure", rooms: unitCrooms },
+              { type: "UNIT D", area: "BUA: Per brochure | SBUA: Per brochure", rooms: unitDrooms },
             ].map((unit, idx) => (
               <motion.div
                 key={unit.type}
@@ -405,9 +375,7 @@ function ProjectDetailPage() {
                 </div>
 
                 <div className="mb-5 bg-white border border-[var(--border)] rounded-lg p-2 shadow-sm">
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                    <Img src={unitPlans[idx]} alt={`Unit ${["A", "B", "C", "D"][idx]} Floor Plan`} className="w-full h-full object-contain p-2" />
-                  </div>
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--soft-gray)] to-white" />
                   <div className="mt-2 text-center">
                     <div className="text-xs font-bold text-[var(--charcoal)]">Unit {["A", "B", "C", "D"][idx]} Floor Plan</div>
                   </div>
@@ -456,14 +424,10 @@ function ProjectDetailPage() {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
-                <div className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider mb-2 text-center">
-                  TYPICAL FLOOR PLAN (1st – 5th)
-                </div>
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                  <Img src={typicalFloorPlanImage} alt="Typical Floor Plan 1st to 5th" className="w-full h-full object-contain p-2" />
-                </div>
-                <div className="mt-2 text-center">
-                  <div className="text-xs text-muted-foreground">Combined view showing Units A, B, C, D on each floor</div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]" />
+                <div className="mt-3 text-center">
+                  <div className="text-sm font-bold text-[var(--charcoal)]">SITE / PARKING PLAN</div>
+                  <div className="text-xs text-muted-foreground mt-1">Site layout with car parking and road access</div>
                   <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
                 </div>
               </div>
@@ -477,33 +441,15 @@ function ProjectDetailPage() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             >
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
-                <div className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider mb-2 text-center">
-                  SITE PLAN
-                </div>
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                  <Img src={sitePlanImage} alt="Site Plan" className="w-full h-full object-contain p-2" />
-                </div>
-                <div className="mt-2 text-center">
-                  <div className="text-xs text-muted-foreground">Site layout with parking and road access</div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]" />
+                <div className="mt-3 text-center">
+                  <div className="text-sm font-bold text-[var(--charcoal)]">TYPICAL FLOOR PLAN</div>
+                  <div className="text-xs text-muted-foreground mt-1">Combined view showing all units on each floor</div>
                   <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
                 </div>
               </div>
             </motion.div>
           </div>
-
-          <motion.div
-            className="mt-8 flex flex-col items-center"
-            variants={reduced ? undefined : scaleFade}
-            initial="hidden"
-            whileInView="visible"
-            viewport={sectionViewport}
-            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-          >
-            <Compass />
-            <div className="text-[10px] md:text-xs text-muted-foreground mt-2 text-center">
-              Compass orientation for floor plans
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -643,7 +589,7 @@ function ProjectDetailPage() {
           >
             <span className="eyebrow">Location</span>
             <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-[var(--charcoal)]">
-              Find Us at Panjabari, Guwahati
+              Find Us in Guwahati
             </h2>
           </motion.div>
 
@@ -656,7 +602,7 @@ function ProjectDetailPage() {
             className="overflow-hidden rounded-2xl shadow-lg"
           >
             <iframe
-              src="https://maps.google.com/maps?q=Sailaja%20Sapphire%20Namghar%20Path%20Panjabari%20Guwahati&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Sailaja%20Residency%20Guwahati%20Assam&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height={isMobile ? 300 : 400}
               className="md:h-[400px] lg:h-[500px]"
@@ -664,7 +610,7 @@ function ProjectDetailPage() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Sailaja's Sapphire Location"
+              title="Sailaja Residency Location"
             />
           </motion.div>
 
@@ -679,11 +625,11 @@ function ProjectDetailPage() {
             <div className="flex items-center gap-3">
               <MapPin className="text-[var(--primary)] shrink-0" size={20} />
               <span className="text-sm md:text-base text-[var(--charcoal)] font-semibold">
-                Namghar Path, Panjabari, Guwahati
+                Sailaja Residency, Guwahati, Assam
               </span>
             </div>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Sailaja+Sapphire+Namghar+Path+Panjabari+Guwahati"
+              href="https://www.google.com/maps/dir/?api=1&destination=Sailaja+Residency+Guwahati"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary w-full sm:w-auto justify-center min-h-[48px]"
@@ -710,13 +656,8 @@ function ProjectDetailPage() {
               Our RERA Registration
             </h2>
             <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-              Sailaja's Sapphire is officially registered under the Assam Real Estate Regulatory Authority (RERA), ensuring full transparency and compliance for our buyers.
+              Sailaja Residency is officially registered under the Assam Real Estate Regulatory Authority (RERA), ensuring full transparency and compliance for our buyers.
             </p>
-
-            <div className="mt-6 inline-flex items-center gap-2 bg-[var(--primary)] text-[var(--charcoal)] px-6 py-3 font-bold text-sm tracking-wider uppercase">
-              <ShieldCheck size={18} />
-              <span>RERA No: {reraNumber}</span>
-            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-6">
@@ -728,9 +669,7 @@ function ProjectDetailPage() {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                  <Img src={rera1Image} alt="RERA Certificate Page 1" className="w-full h-full object-contain p-2" />
-                </div>
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]" />
                 <div className="mt-3 text-center">
                   <div className="text-sm font-bold text-[var(--charcoal)]">RERA Certificate — Page 1</div>
                   <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
@@ -746,9 +685,7 @@ function ProjectDetailPage() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             >
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                  <Img src={rera2Image} alt="RERA Certificate Page 2" className="w-full h-full object-contain p-2" />
-                </div>
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]" />
                 <div className="mt-3 text-center">
                   <div className="text-sm font-bold text-[var(--charcoal)]">RERA Certificate — Page 2</div>
                   <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
@@ -778,7 +715,7 @@ function ProjectDetailPage() {
                 Interested?
               </div>
               <h3 className="text-2xl md:text-4xl font-black text-[var(--charcoal)] leading-tight">
-                Interested in Sailaja's<br className="md:hidden" /> Sapphire?
+                Interested in Sailaja<br className="md:hidden" /> Residency?
               </h3>
               <p className="mt-2 text-sm md:text-base text-[var(--charcoal)]/80 max-w-lg">
                 Get in touch with us today for site visits, pricing, and more details.

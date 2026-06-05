@@ -41,6 +41,8 @@ const detailRoutes: Record<string, string> = {
   "Bimaan Arcade": "/projects/bimaan-arcade",
   "Sailaja's Durga Residency": "/projects/durga-residency",
   "Sailaja's Mangalmurti Enclave": "/projects/mangalmurti-enclave",
+  "MH Complex (RERA)": "/projects/mh-complex",
+  "Shree Bishnu Commercial": "/projects/shree-bishnu-commercial",
 };
 
 export function ProjectsPageCard({ project }: { project: Project }) {

@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import CountUp from "react-countup";
 import { Award, Building2, CheckCircle2, HardHat, Home, Landmark, Sofa, Star, Users } from "lucide-react";
-import heroImg from "@/assets/hero-home.jpg";
+import heroImg from "@/assets/herosectionimg.webp";
 import residentialImg from "@/assets/bhaskarimg/sailajabhaskarresideny.webp";
 import commercialImg from "@/assets/fashioncityimg.webp";
 import interiorImg from "@/assets/service-interior.jpg";
@@ -11,8 +11,8 @@ import landImg from "@/assets/service-land.jpg";
 import durgaImg from "@/assets/durgaresidencyimg/sailajadurgaresidency.webp";
 import sapphireImg from "@/assets/project-sapphire.jpg";
 import bimaanImg from "@/assets/project-bimaan.jpg";
-import sunshineImg from "@/assets/project-sunshine.jpg";
-import xopunImg from "@/assets/project-xopun.jpg";
+import sunshineImg from "@/assets/sunshineresidencyimg/sunshinneimg.webp";
+import xopunImg from "@/assets/xopunaloyimg/xopunaloy.webp";
 import { CtaBand } from "@/components/site/PageHero";
 import { HeroCurve } from "@/components/HeroCurve";
 import { fadeUp, slideLeft, slideRight, staggerFast, staggerMedium, scaleFade } from "@/lib/animations";
@@ -183,7 +183,7 @@ function Index() {
           animate={reduced ? undefined : { scale: 1.1 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
-          <img src={heroImg} alt="Premium residential construction in Guwahati" className="w-full h-full object-cover" width={1600} height={900} />
+          <img src={xopunImg} alt="Premium residential construction in Guwahati" className="w-full h-full object-cover" width={1600} height={900} />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--charcoal)]/90 via-[var(--charcoal)]/70 to-[var(--charcoal)]/40" />
         </motion.div>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-20 grid lg:grid-cols-2 gap-12 items-center">

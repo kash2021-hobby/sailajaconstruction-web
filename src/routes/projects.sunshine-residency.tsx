@@ -1,19 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { MapPin, Home, ArrowRight, Building2, CheckCircle2, ExternalLink, ShieldCheck } from "lucide-react";
+import { MapPin, Maximize, Clock, Home, ArrowRight, Building2, Layout, ShowerHead, CookingPot, DoorOpen, Wind, PaintBucket, Droplet, Zap, ArrowUpDown, ExternalLink, ShieldCheck } from "lucide-react";
 import { HeroCurve } from "@/components/HeroCurve";
 import { CtaBand } from "@/components/site/PageHero";
-import { fadeUp, slideLeft, slideRight, staggerFast, scaleFade } from "@/lib/animations";
+import { fadeUp, slideLeft, slideRight, staggerFast, staggerMedium, scaleFade } from "@/lib/animations";
 import { useIsMobile } from "@/hooks/use-mobile";
+
+import heroImage from "@/assets/sunshineresidencyimg/sunshinneimg.webp";
+import firstFloorPlanImage from "@/assets/sunshineresidencyimg/typicalfirstfloorplan.webp";
+import secondFloorPlanImage from "@/assets/sunshineresidencyimg/typicalsecondfloorplan.webp";
 
 export const Route = createFileRoute("/projects/sunshine-residency")({
   head: () => ({
     meta: [
-      { title: "Sailaja's Sunshine Residency — Completed Residential Project in Guwahati | Sailaja Constructions" },
-      { name: "description", content: "Explore Sunshine Residency — a completed residential project by Sailaja Constructions in Guwahati offering quality apartments." },
+      { title: "Sailaja's Sunshine Residency — Completed Project in Guwahati | Sailaja Constructions" },
+      { name: "description", content: "Explore Sailaja's Sunshine Residency — a completed residential project in Guwahati offering 1, 2 & 3BHK apartments." },
       { property: "og:title", content: "Sailaja's Sunshine Residency — Elegant Residential Living in Guwahati" },
-      { property: "og:description", content: "A completed residential development offering thoughtfully designed apartments in Guwahati, Assam." },
+      { property: "og:description", content: "A completed residential development offering 1, 2 & 3BHK apartments in Guwahati, Assam." },
       { property: "og:url", content: "/projects/sunshine-residency" },
     ],
     links: [{ rel: "canonical", href: "/projects/sunshine-residency" }],
@@ -21,64 +25,112 @@ export const Route = createFileRoute("/projects/sunshine-residency")({
   component: ProjectDetailPage,
 });
 
-const highlights = [
-  { icon: MapPin, label: "Location", value: "Guwahati, Assam [TODO: Add specific locality]" },
-  { icon: CheckCircle2, label: "Status", value: "Ready to Move" },
+const propSummary = [
+  { icon: MapPin, label: "Location", value: "Guwahati, Assam" },
+  { icon: Maximize, label: "Area", value: "585 – 1021 Sq.Ft (BUA)" },
+  { icon: Clock, label: "Status", value: "Completed" },
+  { icon: Home, label: "Type", value: "1, 2 & 3 BHK Apartment" },
 ];
 
 const specs = [
   { label: "Project Type", value: "Residential" },
-  { label: "Total Units per Floor", value: "4 (Unit A, B, C, D)" },
-  { label: "Location", value: "Guwahati, Assam [TODO: Add specific locality]" },
+  { label: "Configuration", value: "1, 2 & 3 BHK (Two Floor Plans)" },
+  { label: "Typical First Floor", value: "4 Units (A, B, C, D)" },
+  { label: "Typical Second Floor", value: "4 Units (A, B, C, D)" },
+  { label: "Location", value: "Guwahati, Assam" },
   { label: "Status", value: "Completed (Ready to Move)" },
-  { label: "RERA Number", value: "[TODO: Add if available]" },
-  { label: "Total Area / Configuration", value: "[TODO: Add if available]" },
 ];
 
-const unitTypeA = {
-  type: "UNIT A",
-  config: "[TODO: Confirm BHK from brochure]",
-  bua: "790 Sq.Ft",
-  sbua: "988 Sq.Ft",
-  dimensions: "[TODO: Add from brochure]",
+type UnitData = {
+  type: string;
+  bhk: string;
+  bua: string;
+  sbua: string;
 };
 
-const unitTypeB = {
-  type: "UNIT B",
-  config: "[TODO: Confirm BHK from brochure]",
-  bua: "733 Sq.Ft",
-  sbua: "916 Sq.Ft",
-  dimensions: "[TODO: Add from brochure]",
-};
+const firstFloorUnits: UnitData[] = [
+  { type: "UNIT A", bhk: "3 BHK", bua: "1021 Sq.Ft", sbua: "1276 Sq.Ft" },
+  { type: "UNIT B", bhk: "2 BHK", bua: "733 Sq.Ft", sbua: "916 Sq.Ft" },
+  { type: "UNIT C", bhk: "1 BHK", bua: "585 Sq.Ft", sbua: "731 Sq.Ft" },
+  { type: "UNIT D", bhk: "2 BHK", bua: "682 Sq.Ft", sbua: "853 Sq.Ft" },
+];
 
-const unitTypeC = {
-  type: "UNIT C",
-  config: "[TODO: Confirm BHK from brochure]",
-  bua: "[TODO: Add from brochure]",
-  sbua: "[TODO: Add from brochure]",
-  dimensions: "[TODO: Add from brochure]",
-};
+const secondFloorUnits: UnitData[] = [
+  { type: "UNIT A", bhk: "2 BHK", bua: "790 Sq.Ft", sbua: "988 Sq.Ft" },
+  { type: "UNIT B", bhk: "2 BHK", bua: "733 Sq.Ft", sbua: "916 Sq.Ft" },
+  { type: "UNIT C", bhk: "2 BHK", bua: "733 Sq.Ft", sbua: "916 Sq.Ft" },
+  { type: "UNIT D", bhk: "2 BHK", bua: "786 Sq.Ft", sbua: "983 Sq.Ft" },
+];
 
-// TODO: BUA/SBUA values were unclear in source — verify before
-// publishing as these numbers seemed inconsistent
-const unitTypeD = {
-  type: "UNIT D",
-  config: "[TODO: Confirm BHK from brochure]",
-  bua: "[TODO: Confirm — possibly 766 Sq.Ft but verify]",
-  sbua: "[TODO: Confirm — possibly 583 Sq.Ft but verify; SBUA is typically larger than BUA]",
-  dimensions: "[TODO: Add from brochure]",
-};
-
-const allUnits = [unitTypeA, unitTypeB, unitTypeC, unitTypeD];
-
-// TODO: Confirm if Modular Kitchen, Garden, and Gym are also
-// available — currently only 5 features visible in source
-const keyFeatures = [
-  "Vastu-Compliant Layout",
-  "24/7 Water & Electricity",
-  "CCTV Surveillance",
-  "High-Speed Elevators",
-  "Generator",
+const specCategories = [
+  {
+    title: "Structure",
+    icon: Building2,
+    items: [
+      "R.C.C. seismic resistant frame structure as per I.S. code of practice.",
+    ],
+  },
+  {
+    title: "Floor",
+    icon: Layout,
+    items: [
+      "Vitrified flooring of size 600mm × 600mm in drawing, dining, bedroom, and kitchen.",
+      "Antiskid ceramic tiles (300mm × 300mm) in toilets.",
+    ],
+  },
+  {
+    title: "Toilet",
+    icon: ShowerHead,
+    items: [
+      "Concealed CPVC plumbing and sanitary system.",
+      "White color sanitary ware with good quality water supply fittings.",
+      "Glazed wall tiles 7 ft on walls.",
+    ],
+  },
+  {
+    title: "Kitchen",
+    icon: CookingPot,
+    items: [
+      "Marble/Granite kitchen slab with wall tiles two feet above slab.",
+      "Stainless steel sink with good quality CP water supply fitting.",
+    ],
+  },
+  {
+    title: "Doors",
+    icon: DoorOpen,
+    items: [
+      "Waterproof flush doors throughout.",
+    ],
+  },
+  {
+    title: "Windows",
+    icon: Wind,
+    items: [
+      "Plain aluminum sliding windows with grill.",
+    ],
+  },
+  {
+    title: "Painting",
+    icon: PaintBucket,
+    items: [
+      "Internal walls finished with POP.",
+      "External walls painted with good quality cement paint as per builder's choice.",
+    ],
+  },
+  {
+    title: "Water Supply",
+    icon: Droplet,
+    items: [
+      "24 hours water supply ensured with overhead tank.",
+    ],
+  },
+  {
+    title: "Electricity",
+    icon: Zap,
+    items: [
+      "Concealed wiring with modular switches.",
+    ],
+  },
 ];
 
 function Img({ src, alt, className }: { src: string; alt: string; className?: string }) {
@@ -143,10 +195,10 @@ function ProjectDetailPage() {
                 Sailaja's<br />Sunshine Residency
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/80 font-semibold">
-                Elegant Residential Living in the Heart of Guwahati
+                1, 2 & 3 BHK Residences in Guwahati
               </p>
               <p className="mt-3 text-sm md:text-base text-white/65 leading-relaxed max-w-xl">
-                Welcome to Sunshine Residency — an elegant residential development by Sailaja Construction in the heart of Guwahati. Thoughtfully designed apartments offering comfort, modern amenities, and quality construction.
+                Welcome to Sailaja's Sunshine Residency — a completed residential development by Sailaja Construction in Guwahati. Thoughtfully designed 1, 2 & 3 BHK apartments with R.C.C. seismic-resistant construction, vitrified flooring, and quality finishes throughout.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
@@ -156,10 +208,10 @@ function ProjectDetailPage() {
                   Enquire Now <ArrowRight size={16} />
                 </Link>
                 <a
-                  href="#"
+                  href="#floor-plans"
                   className="btn-outline w-full sm:w-auto justify-center min-h-[48px]"
                 >
-                  View Gallery
+                  View Floor Plan
                 </a>
               </div>
             </motion.div>
@@ -170,14 +222,8 @@ function ProjectDetailPage() {
               animate="visible"
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              {/*
-                TODO: Add sunshine-residency hero image to src/assets/sunshineresidencyimg/
-              */}
-              <div className="w-full aspect-[4/3] rounded-lg shadow-2xl bg-[var(--soft-gray)] border border-[var(--border)] flex items-center justify-center">
-                <div className="text-center p-4">
-                  <Building2 size={48} className="mx-auto text-muted-foreground/40 mb-2" />
-                  <p className="text-xs text-muted-foreground/60 font-semibold">Building Image — TODO: Add sunshine-residency hero image to src/assets/sunshineresidencyimg/</p>
-                </div>
+              <div className="w-full aspect-[4/3] rounded-lg shadow-2xl bg-[var(--soft-gray)] overflow-hidden">
+                <Img src={heroImage} alt="Sailaja's Sunshine Residency" className="w-full h-full object-cover" />
               </div>
             </motion.div>
           </div>
@@ -189,27 +235,27 @@ function ProjectDetailPage() {
       <section className="relative z-10 -mt-6 md:-mt-10 px-4 sm:px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 max-w-lg mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
             variants={reduced ? undefined : staggerFast}
             initial="hidden"
             whileInView="visible"
             viewport={sectionViewport}
           >
-            {highlights.map((h) => (
+            {propSummary.map((item) => (
               <motion.div
-                key={h.label}
+                key={item.label}
                 variants={reduced ? undefined : fadeUpMobile}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="bg-white shadow-lg rounded-lg p-3 md:p-4 flex flex-col items-center text-center border-t-2 border-[var(--primary)]"
               >
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-[var(--primary)] flex items-center justify-center rounded-full mb-2">
-                  <h.icon className="text-[var(--charcoal)]" size={isMobile ? 18 : 22} />
+                  <item.icon className="text-[var(--charcoal)]" size={isMobile ? 18 : 22} />
                 </div>
                 <div className="text-xs md:text-sm font-bold text-[var(--charcoal)]" style={{ fontFamily: "Montserrat" }}>
-                  {h.value}
+                  {item.value}
                 </div>
                 <div className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mt-0.5">
-                  {h.label}
+                  {item.label}
                 </div>
               </motion.div>
             ))}
@@ -229,10 +275,10 @@ function ProjectDetailPage() {
           >
             <span className="eyebrow">About the Project</span>
             <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-[var(--charcoal)]">
-              About the Project
+              1, 2 & 3BHK Living in Guwahati
             </h2>
             <p className="mt-5 text-sm md:text-base text-muted-foreground leading-relaxed">
-              Sailaja's Sunshine Residency is an elegant residential development crafted by Sailaja Construction in the heart of Guwahati. Featuring thoughtfully designed apartments with Vastu-compliant layouts, modern amenities, and quality construction, the project offers comfortable and contemporary living in a well-connected neighborhood.
+              Sailaja's Sunshine Residency is a completed residential development crafted by Sailaja Construction in Guwahati. Featuring two distinct floor plans — Typical First Floor with 3, 2 & 1 BHK configurations, and Typical Second Floor with all 2 BHK units — the project offers versatile living options with R.C.C. seismic-resistant frame structure, vitrified flooring, modern kitchens, and quality finishes throughout.
             </p>
           </motion.div>
           <motion.div
@@ -273,10 +319,17 @@ function ProjectDetailPage() {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-            {allUnits.map((unit, idx) => (
+          {/* Typical First Floor Plan Units */}
+          <div className="mb-4">
+            <h3 className="text-xl md:text-2xl font-black text-[var(--charcoal)]" style={{ fontFamily: "Montserrat" }}>
+              Typical First Floor Plan
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">Units A, B, C, D — 3BHK, 2BHK & 1BHK configurations</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-12">
+            {firstFloorUnits.map((unit, idx) => (
               <motion.div
-                key={unit.type}
+                key={`ff-${unit.type}`}
                 variants={reduced ? undefined : fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -287,25 +340,43 @@ function ProjectDetailPage() {
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
                     <div className="eyebrow text-xs">{unit.type}</div>
-                    <div className="text-sm md:text-base font-bold text-[var(--charcoal)] mt-1">{unit.config}</div>
-                    <div className="text-xs md:text-sm text-muted-foreground mt-1">BUA: {unit.bua} | SBUA: {unit.sbua}</div>
+                    <h3 className="text-base md:text-lg font-black text-[var(--charcoal)] mt-1">BUA: {unit.bua} | SBUA: {unit.sbua}</h3>
+                    <div className="text-xs md:text-sm text-muted-foreground mt-1">{unit.bhk}</div>
                   </div>
                 </div>
 
-                <div className="mb-5 bg-white border border-[var(--border)] rounded-lg p-2 shadow-sm">
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--soft-gray)] to-white flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <p className="text-xs text-muted-foreground/60 font-semibold">{unit.type} Floor Plan — TODO: Add {["unit-a-plan", "unit-b-plan", "unit-c-plan", "unit-d-plan"][idx]}.jpg</p>
-                    </div>
-                  </div>
-                  <div className="mt-2 text-center">
-                    <div className="text-xs font-bold text-[var(--charcoal)]">{unit.type} Floor Plan — TODO: Add {["unit-a-plan", "unit-b-plan", "unit-c-plan", "unit-d-plan"][idx]}.jpg</div>
+
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Typical Second Floor Plan Units */}
+          <div className="mb-4">
+            <h3 className="text-xl md:text-2xl font-black text-[var(--charcoal)]" style={{ fontFamily: "Montserrat" }}>
+              Typical Second Floor Plan
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">Units A, B, C, D — all 2BHK configurations</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            {secondFloorUnits.map((unit, idx) => (
+              <motion.div
+                key={`sf-${unit.type}`}
+                variants={reduced ? undefined : fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={sectionViewport}
+                transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
+                className="bg-white border border-[var(--border)] p-5 md:p-8 hover:shadow-xl transition"
+              >
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <div>
+                    <div className="eyebrow text-xs">{unit.type}</div>
+                    <h3 className="text-base md:text-lg font-black text-[var(--charcoal)] mt-1">BUA: {unit.bua} | SBUA: {unit.sbua}</h3>
+                    <div className="text-xs md:text-sm text-muted-foreground mt-1">{unit.bhk}</div>
                   </div>
                 </div>
 
-                <div className="text-xs md:text-sm text-muted-foreground italic">
-                  Room dimensions: {unit.dimensions}
-                </div>
+
               </motion.div>
             ))}
           </div>
@@ -325,34 +396,53 @@ function ProjectDetailPage() {
           >
             <span className="eyebrow">Floor Plans</span>
             <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl text-[var(--charcoal)]">
-              Thoughtfully Designed Layouts
+              Typical First & Second Floor Plans
             </h2>
             <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-              Typical First Floor Plan showing all 4 units
+              Two distinct floor layouts offering versatile living configurations
             </p>
           </motion.div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             <motion.div
               variants={reduced ? undefined : fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={sectionViewport}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg"
             >
-              <div className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider mb-2 text-center">
-                TYPICAL FIRST FLOOR PLAN
-              </div>
-              <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <p className="text-xs text-muted-foreground/60 font-semibold">Typical First Floor Plan — TODO: Add typical-first-floor-plan.jpg</p>
-                  </div>
+              <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
+                <div className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider mb-2 text-center">
+                  TYPICAL FIRST FLOOR PLAN
+                </div>
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
+                  <Img src={firstFloorPlanImage} alt="Typical First Floor Plan" className="w-full h-full object-contain p-2" />
+                </div>
+                <div className="mt-2 text-center">
+                  <div className="text-xs text-muted-foreground">Units A (3BHK), B (2BHK), C (1BHK), D (2BHK)</div>
+                  <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
                 </div>
               </div>
-              <div className="mt-2 text-center">
-                <div className="text-[10px] text-muted-foreground">Tap to zoom</div>
+            </motion.div>
+
+            <motion.div
+              variants={reduced ? undefined : fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={sectionViewport}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            >
+              <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
+                <div className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider mb-2 text-center">
+                  TYPICAL SECOND FLOOR PLAN
+                </div>
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
+                  <Img src={secondFloorPlanImage} alt="Typical Second Floor Plan" className="w-full h-full object-contain p-2" />
+                </div>
+                <div className="mt-2 text-center">
+                  <div className="text-xs text-muted-foreground">Units A, B, C, D — all 2BHK configurations</div>
+                  <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -367,14 +457,14 @@ function ProjectDetailPage() {
           >
             <Compass />
             <div className="text-[10px] md:text-xs text-muted-foreground mt-2 text-center">
-              Compass orientation for floor plan
+              Compass orientation for floor plans
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ─── SECTION 6: KEY FEATURES ─── */}
-      <section className="py-12 md:py-20 px-5 lg:px-8 bg-[var(--soft-gray)]">
+      {/* ─── SECTION 6: SPECIFICATIONS ─── */}
+      <section className="py-12 md:py-20 px-5 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             className="text-center max-w-2xl mx-auto mb-10 md:mb-14"
@@ -384,33 +474,43 @@ function ProjectDetailPage() {
             viewport={sectionViewport}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="eyebrow">Amenities</span>
+            <span className="eyebrow">Specifications</span>
             <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-[var(--charcoal)]">
-              Key Features
+              Built with Quality, Down to the Last Detail
             </h2>
-            <p className="mt-3 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
-              Quality features designed for comfortable living.
+            <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
+              Premium materials and construction standards throughout every apartment.
             </p>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto"
-            variants={reduced ? undefined : staggerFast}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+            variants={reduced ? undefined : staggerMedium}
             initial="hidden"
             whileInView="visible"
             viewport={sectionViewport}
           >
-            {keyFeatures.map((feature) => (
+            {specCategories.map((cat) => (
               <motion.div
-                key={feature}
-                variants={reduced ? undefined : fadeUpMobile}
+                key={cat.title}
+                variants={reduced ? undefined : fadeUp}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="bg-white border border-[var(--border)] p-4 md:p-5 flex items-center gap-3 hover:shadow-lg transition"
+                className="bg-white border border-[var(--border)] p-5 md:p-6 hover:shadow-lg transition"
               >
-                <CheckCircle2 className="text-[var(--primary)] shrink-0" size={isMobile ? 20 : 24} />
-                <span className="text-sm md:text-base font-bold text-[var(--charcoal)]" style={{ fontFamily: "Montserrat" }}>
-                  {feature}
-                </span>
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-[var(--primary)] flex items-center justify-center mb-4">
+                  <cat.icon className="text-[var(--charcoal)]" size={isMobile ? 20 : 24} />
+                </div>
+                <h3 className="text-base md:text-lg font-black text-[var(--charcoal)] mb-3" style={{ fontFamily: "Montserrat" }}>
+                  {cat.title}
+                </h3>
+                <ul className="space-y-2">
+                  {cat.items.map((item) => (
+                    <li key={item} className="text-xs md:text-sm text-muted-foreground leading-relaxed flex items-start gap-2">
+                      <span className="text-[var(--primary)] mt-1 shrink-0">&#9632;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </motion.div>
@@ -442,10 +542,6 @@ function ProjectDetailPage() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="overflow-hidden rounded-2xl shadow-lg"
           >
-            {/*
-              TODO: Confirm exact address for Sunshine Residency
-              The pin location is approximate until exact street address is provided.
-            */}
             <iframe
               src="https://maps.google.com/maps?q=Sailaja%20Sunshine%20Residency%20Guwahati%20Assam&t=&z=14&ie=UTF8&iwloc=&output=embed"
               width="100%"
@@ -470,7 +566,7 @@ function ProjectDetailPage() {
             <div className="flex items-center gap-3">
               <MapPin className="text-[var(--primary)] shrink-0" size={20} />
               <span className="text-sm md:text-base text-[var(--charcoal)] font-semibold">
-                Sailaja's Sunshine Residency, Guwahati, Assam [TODO: Add specific street address]
+                Guwahati, Assam
               </span>
             </div>
             <a
@@ -485,7 +581,75 @@ function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* ─── SECTION 8: CTA ─── */}
+      {/* ─── SECTION 8: RERA CERTIFICATE ─── */}
+      <section className="py-12 md:py-20 px-5 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-10 md:mb-14"
+            variants={reduced ? undefined : fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={sectionViewport}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <span className="eyebrow">RERA Certified</span>
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl text-[var(--charcoal)]">
+              RERA Registration
+            </h2>
+            <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
+              Sailaja's Sunshine Residency is registered under the Assam Real Estate Regulatory Authority (RERA), ensuring full transparency and compliance for our buyers.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            <motion.div
+              variants={reduced ? undefined : fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={sectionViewport}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <p className="text-xs text-muted-foreground/60 font-semibold">RERA Certificate — Page 1 — Add rera1.webp to src/assets/sunshineresidencyimg/</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 text-center">
+                  <div className="text-sm font-bold text-[var(--charcoal)]">RERA Certificate — Page 1</div>
+                  <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={reduced ? undefined : fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={sectionViewport}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            >
+              <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
+                <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <p className="text-xs text-muted-foreground/60 font-semibold">RERA Certificate — Page 2 — Add rera2.webp to src/assets/sunshineresidencyimg/</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-3 text-center">
+                  <div className="text-sm font-bold text-[var(--charcoal)]">RERA Certificate — Page 2</div>
+                  <div className="text-[10px] text-muted-foreground mt-1">Tap to zoom</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 9: CTA ─── */}
       <section className="bg-[var(--charcoal)] py-16">
         <div className="mx-auto max-w-6xl px-5">
           <motion.div

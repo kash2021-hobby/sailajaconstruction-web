@@ -7,6 +7,8 @@ import { CtaBand } from "@/components/site/PageHero";
 import { fadeUp, fadeIn, slideLeft, slideRight, staggerFast, staggerMedium, scaleFade } from "@/lib/animations";
 import { useIsMobile } from "@/hooks/use-mobile";
 import baneswarImage from "@/assets/baneswarimg/sailajabaneswarimg.webp";
+import groundFloorPlanImage from "@/assets/baneswarimg/1st&2ndfloorplan.webp";
+import typicalFloorPlanImage from "@/assets/baneswarimg/3rdfloorplan.webp";
 
 export const Route = createFileRoute("/projects/baneswar")({
   head: () => ({
@@ -288,13 +290,13 @@ function ProjectDetailPage() {
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
                   <Img
-                    src="/images/projects/baneswar/floor-plan-ground.jpg"
-                    alt="Ground Floor Plan — TODO: Add image"
+                    src={groundFloorPlanImage}
+                    alt="Ground Floor Plan (1st & 2nd Floor)"
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
-                  <div className="text-sm font-bold text-[var(--charcoal)]">Ground Floor Plan — TODO: Add image</div>
+                  <div className="text-sm font-bold text-[var(--charcoal)]">Ground Floor Plan (1<sup>st</sup> & 2<sup>nd</sup> Floor)</div>
                 </div>
               </div>
             </motion.div>
@@ -309,13 +311,13 @@ function ProjectDetailPage() {
               <div className="bg-white border border-[var(--border)] rounded-lg p-2 md:p-4 shadow-lg">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[var(--soft-gray)]">
                   <Img
-                    src="/images/projects/baneswar/floor-plan-typical.jpg"
-                    alt="Typical Floor Plan — TODO: Add image"
+                    src={typicalFloorPlanImage}
+                    alt="Typical Floor Plan (3rd Floor)"
                     className="w-full h-full object-contain p-2"
                   />
                 </div>
                 <div className="mt-3 text-center">
-                  <div className="text-sm font-bold text-[var(--charcoal)]">Typical Floor Plan — TODO: Add image</div>
+                  <div className="text-sm font-bold text-[var(--charcoal)]">Typical Floor Plan (3<sup>rd</sup> Floor)</div>
                 </div>
               </div>
             </motion.div>

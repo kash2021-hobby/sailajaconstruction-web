@@ -1,7 +1,7 @@
 import durgaImg from "@/assets/durgaresidencyimg/sailajadurgaresidency.webp";
 import sapphireImg from "@/assets/sailajasapphireimg/saphire.webp";
-import bimaanImg from "@/assets/project-bimaan.jpg";
-import sunshineImg from "@/assets/project-sunshine.jpg";
+import bimaanImg from "@/assets/bimaanarcadeimg/bimanarcadeimg.webp";
+import sunshineImg from "@/assets/sunshineresidencyimg/sunshinneimg.webp";
 import xopunImg from "@/assets/xopunaloyimg/xopunaloy.webp";
 import mangalImg from "@/assets/mangalmurtienclaveimg/mangalmurti.webp";
 import baneswarImg from "@/assets/baneswarimg/sailajabaneswarimg.webp";
@@ -9,6 +9,7 @@ import bhaskarImg from "@/assets/bhaskarimg/sailajabhaskarresideny.webp";
 import arupArcadiaImg from "@/assets/aruparcadiaimg/aruparcadia.webp";
 import sailajaParadiseImg from "@/assets/sailajaparadiseimg/sailajaparadise.webp";
 import madhabMansionImg from "@/assets/madhabmansionimg/madhobmansion.webp";
+import maanavAbodeImg from "@/assets/manabadobeimg/manabadobe.webp";
 
 export type Project = {
   name: string;
@@ -35,19 +36,19 @@ export const projects: Project[] = [
     name: "Sailaja's Sapphire",
     type: "Residential",
     status: "Ongoing",
-    area: "48,000 sq.ft",
-    location: "Guwahati",
+    area: "720 – 1020 Sq.Ft",
+    location: "Panjabari, Guwahati",
     img: sapphireImg,
-    desc: "Multi-family residential community with landscaped courtyards and premium amenities.",
+    desc: "An elegant 5-storey residential development offering 2 & 3BHK apartments at Namghar Path, Panjabari, Guwahati.",
   },
   {
     name: "Bimaan Arcade",
-    type: "Commercial",
+    type: "Residential",
     status: "Ongoing",
-    area: "22,500 sq.ft",
-    location: "Guwahati",
+    area: "850 – 1350 Sq.Ft",
+    location: "Guwahati, Assam",
     img: bimaanImg,
-    desc: "Mixed-use commercial arcade with retail, dining and office space in central Guwahati.",
+    desc: "An elegant residential development offering thoughtfully designed 2 & 3BHK apartments in Guwahati.",
   },
   {
     name: "Sailaja Paradise",
@@ -74,7 +75,7 @@ export const projects: Project[] = [
     status: "Ongoing",
     area: "35,000 sq.ft",
     location: "Guwahati",
-    img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+    img: maanavAbodeImg,
     desc: "A RERA-certified residential abode crafted for comfortable family living.",
     tags: ["RERA"],
   },
@@ -110,10 +111,11 @@ export const projects: Project[] = [
     name: "Sailaja's Mangalmurti Enclave",
     type: "Residential",
     status: "Completed",
-    area: "36,000 sq.ft",
-    location: "Sachal, Guwahati, Assam",
+    area: "960 – 1100 Sq.Ft",
+    location: "Chachal, Guwahati",
     img: mangalImg,
-    desc: "An elegant RERA-certified residential development offering thoughtfully designed 2 & 3BHK apartments in the heart of Guwahati.",
+    desc: "An elegant RERA-certified residential development offering premium 3BHK apartments in Chachal, Guwahati.",
+    tags: ["RERA"],
   },
   {
     name: "Sailaja's Baneswar",
@@ -137,10 +139,10 @@ export const projects: Project[] = [
     name: "Sailaja's Madhab Mansion",
     type: "Residential",
     status: "Completed",
-    area: "25,000 sq.ft",
-    location: "Guwahati, Assam",
+    area: "759 – 1072 Sq.Ft",
+    location: "Panjabari, Guwahati",
     img: madhabMansionImg,
-    desc: "An elegant residential development offering thoughtfully designed 2BHK and 3BHK apartments in the heart of Guwahati.",
+    desc: "An elegant residential development offering thoughtfully designed 2 & 3BHK apartments in Panjabari, Guwahati.",
   },
   {
     name: "Durga",
