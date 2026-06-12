@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+# Replace with your actual domain if different
+Sitemap: https://sailajaconstructions.com/sitemap.xml
